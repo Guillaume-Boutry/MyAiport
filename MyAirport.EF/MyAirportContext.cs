@@ -1,15 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace GBO.MyAiport.EF
 {
     public class MyAirportContext : DbContext
     {
+        private ILogger logger;
+
         public DbSet<Vol> Vols { get; set; }
         public DbSet<Bagage> Bagages { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public MyAirportContext(DbContextOptions<MyAirportContext> options, ILogger logger) : base(options)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=Airport;Integrated Security=True");
+            this.logger = logger;
+            logger.LogInformation("Context initialized.");
         }
+
     }
 }
