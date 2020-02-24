@@ -85,7 +85,7 @@ namespace GBO.MyAiport.ConsoleApp
 
                 // Update
                 Console.WriteLine($"Le bagage {b1.BagageID} est modifié pour être rattaché au vol {v1.VolID} => {v1.Cie}{v1.Lig}");
-                b1.VolID = v1.VolID;
+                b1.Vol = v1;
                 db.SaveChanges();
                 v1.Bagages.ForEach(b =>
                 {

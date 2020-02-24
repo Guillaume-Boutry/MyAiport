@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBO.MyAiport.EF
 {
@@ -18,18 +19,23 @@ namespace GBO.MyAiport.EF
         [Column(TypeName = "varchar(5)")]
         public string Lig { get; set; }
 
-        public DateTime Dhc { get; set; }
+        [AllowNull]
+        public DateTime? Dhc { get; set; }
 
+        [AllowNull]
         [Column(TypeName = "char(3)")]
-        public string Pkg { get; set; }
+        public string? Pkg { get; set; }
 
+        [AllowNull]
         [Column(TypeName = "char(6)")]
-        public string Imm { get; set; }
+        public string? Imm { get; set; }
 
-        public short Pax { get; set; }
+        [AllowNull]
+        public short? Pax { get; set; }
 
+        [AllowNull]
         [Column(TypeName = "char(3)")]
-        public string Des { get; set; }
+        public string? Des { get; set; }
 
         public List<Bagage> Bagages { get; set; }
     }

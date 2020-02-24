@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBO.MyAiport.EF
 {
@@ -11,11 +12,8 @@ namespace GBO.MyAiport.EF
         [Key]
         public int BagageID { get; set; }
 
-        [ForeignKey("Vol")]
-        [Required]
-        public int VolID { get; set; }
-
-        public Vol Vol { get; set; }
+        [AllowNull]
+        public Vol? Vol { get; set; }
 
         [Column(TypeName = "char(12)")]
         [Required]
@@ -24,19 +22,27 @@ namespace GBO.MyAiport.EF
         [Required]
         public DateTime DateCreation { get; set; }
 
+        [AllowNull]
         [Column(TypeName = "char(1)")]
-        public string Classe { get; set; }
-        public bool Prioritaire { get; set; }
+        public string? Classe { get; set; }
 
+        [AllowNull]
+        public bool? Prioritaire { get; set; }
+
+        [AllowNull]
         [Column(TypeName = "char(1)")]
-        public string Sta { get; set; }
+        public string? Sta { get; set; }
+
+        [AllowNull]
         [Column(TypeName = "char(3)")]
-        public string Ssur { get; set; }
+        public string? Ssur { get; set; }
+
+        [AllowNull]
         [Column(TypeName = "varchar(3)")]
+        public string? Destination { get; set; }
 
-        public string Destination { get; set; }
-
+        [AllowNull]
         [Column(TypeName = "char(3)")]
-        public string Escale { get; set; }
+        public string? Escale { get; set; }
     }
 }
