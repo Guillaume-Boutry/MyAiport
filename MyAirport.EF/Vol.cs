@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 
 namespace GBO.MyAiport.EF
 {
@@ -30,6 +29,6 @@ namespace GBO.MyAiport.EF
         [Column(TypeName = "char(3)")]
         public string? Des { get; set; }
 
-        public List<Bagage> Bagages { get; set; } = null!;
+        public ICollection<Bagage> Bagages { get; set; } = null!;
     }
 }
