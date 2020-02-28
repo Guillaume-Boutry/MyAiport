@@ -6,16 +6,14 @@ namespace GBO.MyAiport.EF
 {
     public class MyAirportContext : DbContext
     {
-        private ILogger logger;
+        public DbSet<Vol> Vols { get; set; } = null!;
+        public DbSet<Bagage> Bagages { get; set; } = null!;
 
-        public DbSet<Vol> Vols { get; set; }
-        public DbSet<Bagage> Bagages { get; set; }
-
-        public MyAirportContext(DbContextOptions<MyAirportContext> options, ILogger logger) : base(options)
+        public MyAirportContext(DbContextOptions<MyAirportContext> options) : base(options)
         {
-            this.logger = logger;
-            logger.LogInformation("Context initialized.");
+
         }
+ 
 
     }
 }

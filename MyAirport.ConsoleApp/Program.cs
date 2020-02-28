@@ -4,34 +4,35 @@ using System;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace GBO.MyAiport.ConsoleApp
 {
     class Program
     {
         
+        public static readonly ILoggerFactory MyLoggerFactoy = LoggerFactory.Create(builder =>
+        {
+            builder
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("System", LogLevel.Warning)
+                .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                .AddConsole()
+                .AddEventSourceLogger();
+        });
 
         static void Main(string[] args)
         {
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder
-                    .AddFilter("Microsoft", LogLevel.Warning)
-                    .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
-                    .AddConsole()
-                    .AddEventSourceLogger();
-            });
-            ILogger logger = loggerFactory.CreateLogger<Program>();
-
+            ILogger logger = MyLoggerFactoy.CreateLogger<Program>();
+            logger.LogInformation("Logger initialized");
             var connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             var optionsBuilder = new DbContextOptionsBuilder<MyAirportContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder
+                .UseSqlServer(connectionString)
+                .UseLoggerFactory(MyLoggerFactoy);
 
             Console.WriteLine("MyAirport project bonjour!!");
-            using (var db = new MyAirportContext(optionsBuilder.Options, logger))
+            using (var db = new MyAirportContext(optionsBuilder.Options))
             {
                 // Create
                 Console.WriteLine("Création du vol LH1232");

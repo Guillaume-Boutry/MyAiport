@@ -20,9 +20,8 @@ namespace GBO.MyAiport.EF
                     .AddFilter("System", LogLevel.Warning)
                     .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug);
             });
-            ILogger logger = loggerFactory.CreateLogger<MyAirportContextFactory>();
 
-            return new MyAirportContext(optionsBuilder.Options, logger);
+            return new MyAirportContext(optionsBuilder.Options);
         }
     }
 }
