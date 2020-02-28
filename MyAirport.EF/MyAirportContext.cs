@@ -1,15 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace GBO.MyAiport.EF
 {
     public class MyAirportContext : DbContext
     {
-        public DbSet<Vol> Vols { get; set; }
-        public DbSet<Bagage> Bagages { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DbSet<Vol> Vols { get; set; } = null!;
+        public DbSet<Bagage> Bagages { get; set; } = null!;
+
+        public MyAirportContext(DbContextOptions<MyAirportContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=Airport;Integrated Security=True");
+
         }
+ 
+
     }
 }

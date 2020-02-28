@@ -1,16 +1,38 @@
 ﻿using GBO.MyAiport.EF;
 using System.Linq;
 using System;
+using Microsoft.Extensions.Logging;
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBO.MyAiport.ConsoleApp
 {
     class Program
     {
+        
+        public static readonly ILoggerFactory MyLoggerFactoy = LoggerFactory.Create(builder =>
+        {
+            builder
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("System", LogLevel.Warning)
+                .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                .AddConsole()
+                .AddEventSourceLogger();
+        });
+
         static void Main(string[] args)
         {
+            ILogger logger = MyLoggerFactoy.CreateLogger<Program>();
+            logger.LogInformation("Logger initialized");
+            var connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            var optionsBuilder = new DbContextOptionsBuilder<MyAirportContext>();
+            optionsBuilder
+                .UseSqlServer(connectionString)
+                .UseLoggerFactory(MyLoggerFactoy);
 
             Console.WriteLine("MyAirport project bonjour!!");
-            using (var db = new MyAirportContext())
+            using (var db = new MyAirportContext(optionsBuilder.Options))
             {
                 // Create
                 Console.WriteLine("Création du vol LH1232");
@@ -64,8 +86,12 @@ namespace GBO.MyAiport.ConsoleApp
 
                 // Update
                 Console.WriteLine($"Le bagage {b1.BagageID} est modifié pour être rattaché au vol {v1.VolID} => {v1.Cie}{v1.Lig}");
-                b1.VolID = v1.VolID;
+                b1.Vol = v1;
                 db.SaveChanges();
+                v1.Bagages.ForEach(b =>
+                {
+                    Console.WriteLine($"Le bagage {b.BagageID} est associé au vol {b.Vol.VolID}.");
+                });
                 Console.ReadLine();
 
                 // Delete vol et bagages du vol
