@@ -9,13 +9,13 @@ namespace GBO.MyAiport.ConsoleApp
 {
     class Program
     {
-        
+
         public static readonly ILoggerFactory MyLoggerFactoy = LoggerFactory.Create(builder =>
         {
             builder
-                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("Microsoft", LogLevel.Debug)
                 .AddFilter("System", LogLevel.Warning)
-                .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                .AddFilter("GBO.MyAiport.ConsoleApp", LogLevel.Debug)
                 .AddConsole()
                 .AddEventSourceLogger();
         });
@@ -26,10 +26,9 @@ namespace GBO.MyAiport.ConsoleApp
             logger.LogInformation("Logger initialized");
             var connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
-            var optionsBuilder = new DbContextOptionsBuilder<MyAirportContext>();
-            optionsBuilder
-                .UseSqlServer(connectionString)
-                .UseLoggerFactory(MyLoggerFactoy);
+            var optionsBuilder = new DbContextOptionsBuilder<MyAirportContext>()
+                                    .UseSqlServer(connectionString)
+                                    .UseLoggerFactory(MyLoggerFactoy);
 
             Console.WriteLine("MyAirport project bonjour!!");
             using (var db = new MyAirportContext(optionsBuilder.Options))

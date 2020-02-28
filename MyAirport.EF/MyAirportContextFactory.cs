@@ -16,9 +16,8 @@ namespace GBO.MyAiport.EF
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
-                    .AddFilter("Microsoft", LogLevel.Warning)
-                    .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug);
+                    .AddFilter("Microsoft", LogLevel.Debug)
+                    .AddFilter("System", LogLevel.Warning);
             });
 
             return new MyAirportContext(optionsBuilder.Options);
