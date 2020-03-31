@@ -7,14 +7,21 @@ namespace GBO.MyAiport.EF
 {
     public class Vol
     {
+        public Vol()
+        {
+            Cie = "";
+            Lig = "";
+            Bagages = new List<Bagage>();
+        }
+
         [Key]
         public int VolID { get; set; }
 
         [Column(TypeName = "varchar(5)")]
-        public string Cie { get; set; } = null!;
+        public string Cie { get; set; }
 
         [Column(TypeName = "varchar(5)")]
-        public string Lig { get; set; } = null!;
+        public string Lig { get; set; }
 
         public DateTime? Dhc { get; set; }
 
@@ -29,6 +36,6 @@ namespace GBO.MyAiport.EF
         [Column(TypeName = "char(3)")]
         public string? Des { get; set; }
 
-        public ICollection<Bagage> Bagages { get; set; } = null!;
+        public virtual ICollection<Bagage> Bagages { get; set; }
     }
 }

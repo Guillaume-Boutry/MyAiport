@@ -6,13 +6,20 @@ namespace GBO.MyAiport.EF
 {
     public class Bagage
     {
+
+        public Bagage()
+        {
+            CodeIata = "";
+
+        }
+
         [Key]
         public int BagageID { get; set; }
 
         public Vol? Vol { get; set; }
 
         [Column(TypeName = "char(12)")]
-        public string CodeIata { get; set; } = null!;
+        public string CodeIata { get; set; }
 
         public DateTime DateCreation { get; set; }
 
@@ -32,5 +39,6 @@ namespace GBO.MyAiport.EF
 
         [Column(TypeName = "char(3)")]
         public string? Escale { get; set; }
+
     }
 }

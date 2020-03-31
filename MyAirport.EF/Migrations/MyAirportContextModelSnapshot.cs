@@ -100,7 +100,8 @@ namespace GBO.MyAiport.EF.Migrations
                 {
                     b.HasOne("GBO.MyAiport.EF.Vol", "Vol")
                         .WithMany("Bagages")
-                        .HasForeignKey("VolID");
+                        .HasForeignKey("VolID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

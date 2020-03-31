@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBO.MyAiport.EF.Migrations
 {
     [DbContext(typeof(MyAirportContext))]
-    [Migration("20200224112202_initial")]
-    partial class initial
+    [Migration("20200228154629_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,7 +102,8 @@ namespace GBO.MyAiport.EF.Migrations
                 {
                     b.HasOne("GBO.MyAiport.EF.Vol", "Vol")
                         .WithMany("Bagages")
-                        .HasForeignKey("VolID");
+                        .HasForeignKey("VolID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -19,7 +19,7 @@ namespace GBO.MyAiport.EF
                     .AddFilter("Microsoft", LogLevel.Debug)
                     .AddFilter("System", LogLevel.Warning);
             });
-
+            optionsBuilder.UseLoggerFactory(loggerFactory);
             return new MyAirportContext(optionsBuilder.Options);
         }
     }

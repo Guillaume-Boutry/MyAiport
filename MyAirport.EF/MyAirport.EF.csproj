@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200228073136_Nullab-rework.cs" />
-    <Compile Remove="Migrations\20200228073136_Nullab-rework.Designer.cs" />
+    <Compile Remove="Migrations\20200228153823_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200228153823_InitialCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

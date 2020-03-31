@@ -13,7 +13,13 @@ namespace GBO.MyAiport.EF
         {
 
         }
- 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Vol>()
+                .HasMany(v => v.Bagages)
+                .WithOne(b => b.Vol)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }
