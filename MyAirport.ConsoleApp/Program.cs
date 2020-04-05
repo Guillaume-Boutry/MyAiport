@@ -13,7 +13,7 @@ namespace GBO.MyAiport.ConsoleApp
         public static readonly ILoggerFactory MyLoggerFactoy = LoggerFactory.Create(builder =>
         {
             builder
-                .AddFilter("Microsoft", LogLevel.Debug)
+                .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("System", LogLevel.Warning)
                 .AddFilter("GBO.MyAiport.ConsoleApp", LogLevel.Debug)
                 .AddConsole()
@@ -33,6 +33,7 @@ namespace GBO.MyAiport.ConsoleApp
             Console.WriteLine("MyAirport project bonjour!!");
             using (var db = new MyAirportContext(optionsBuilder.Options))
             {
+
                 // Create
                 Console.WriteLine("Création du vol LH1232");
                 Vol v1 = new Vol
@@ -91,11 +92,17 @@ namespace GBO.MyAiport.ConsoleApp
                 {
                     Console.WriteLine($"Le bagage {b.BagageID} est associé au vol {b.Vol.VolID}.");
                 });
+                Vol vod = v1;
+                Console.WriteLine("#####################################################");
+                Console.WriteLine(vod.VolID);
+                vod.Bagages.ToList().ForEach(bag => Console.WriteLine(bag.BagageID));
+                Console.WriteLine("#####################################################");
+                return;
                 Console.ReadLine();
 
                 // Delete vol et bagages du vol
                 Console.WriteLine($"Suppression du vol {v1.VolID} => {v1.Cie}{v1.Lig}");
-                db.Remove(v1);
+                //db.Remove(v1);
                 db.SaveChanges();
                 Console.ReadLine();
             }
