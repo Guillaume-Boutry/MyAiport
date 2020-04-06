@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build EF') {
       steps {
-        sh 'dotnet build MyAirport.EF'
+        sh 'dotnet build MyAirport.EF -c Release'
       }
     }
 
@@ -16,13 +16,13 @@ pipeline {
       parallel {
         stage('Build WebApi') {
           steps {
-            sh 'MyAirport.WebApi'
+            sh 'dotnet build MyAirport.WebApi -c Release'
           }
         }
 
         stage('Build ConsoleApp') {
           steps {
-            sh 'dotnet build MyAirport.ConsoleApp'
+            sh 'dotnet build MyAirport.ConsoleApp -c Release'
           }
         }
 
@@ -35,5 +35,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    HOME = '/tmp'
   }
 }
