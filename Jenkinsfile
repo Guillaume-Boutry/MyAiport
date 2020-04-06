@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'mcr.microsoft.com/dotnet/core/sdk'
+      image 'mcr.microsoft.com/dotnet/core/sdk:3.1'
     }
 
   }
@@ -38,5 +38,6 @@ pipeline {
   }
   environment {
     HOME = '/tmp'
+    DOTNET_CLI_TELEMETRY_OPTOUT = '1'
   }
 }
