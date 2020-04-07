@@ -15,16 +15,29 @@ using Microsoft.OpenApi.Models;
 
 namespace GBO.MyAirport.WebApi      
 {
+    /// <summary>
+    /// WebServer startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Read only configurations
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services">Dependency Injections</param>
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -67,6 +80,11 @@ namespace GBO.MyAirport.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app">Application Builder</param>
+        /// <param name="env">Environment settings</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
