@@ -22,7 +22,7 @@ namespace GBO.MyAirport.WebApi.Controllers
 
         // GET: api/Vols
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vol>>> GetVols([FromQuery(Name="bagages")] bool bagages)
+        public async Task<ActionResult<IEnumerable<Vol>>> GetVols([FromQuery(Name="bagages")] bool bagages = false)
         {
             DbSet<Vol> dbSet = _context.Vols;
             if (bagages)
@@ -34,7 +34,7 @@ namespace GBO.MyAirport.WebApi.Controllers
 
         // GET: api/Vols/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vol>> GetVol(int id)
+        public async Task<ActionResult<Vol>> GetVol(int id, [FromQuery(Name="bagages")] bool bagages = false)
         {
             var vol = await _context.Vols.FindAsync(id);
 
@@ -42,8 +42,8 @@ namespace GBO.MyAirport.WebApi.Controllers
             {
                 return NotFound();
             }
-
-            await _context.Entry(vol).Collection(v => v.Bagages).LoadAsync();
+            if (bagages)
+                await _context.Entry(vol).Collection(v => v.Bagages).LoadAsync();
             return vol;
         }
 

@@ -16,7 +16,7 @@ namespace GBO.MyAiport.EF
         [Key]
         public int BagageID { get; set; }
 
-        public Vol? Vol { get; set; }
+        public virtual Vol? Vol { get; set; }
 
         [Column(TypeName = "char(12)")]
         public string CodeIata { get; set; }
