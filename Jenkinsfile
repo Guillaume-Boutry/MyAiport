@@ -12,11 +12,17 @@ pipeline {
       }
     }
 
-    stage('Build WebApi') {
+    stage('Build EF Clients') {
       parallel {
         stage('Build WebApi') {
           steps {
             sh 'dotnet build MyAirport.WebApi -c Release'
+          }
+        }
+        
+        stage('Build GraphQLWebApi') {
+          steps {
+            sh 'dotnet build MyAirport.GraphQLWebApi -c Release'
           }
         }
 
