@@ -22,28 +22,34 @@ namespace GBO.MyAirport.WebApi.Controllers
 
         // GET: api/Vols
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vol>>> GetVols([FromQuery(Name="bagages")] bool bagages = false)
+        public async Task<ActionResult<IEnumerable<Vol>>> GetVols([FromQuery(Name = "bagages")] bool bagages = false)
         {
             DbSet<Vol> dbSet = _context.Vols;
             if (bagages)
             {
-                 return await dbSet.Include(vol => vol.Bagages).ToListAsync();
+                return await dbSet.Include(vol => vol.Bagages).ToListAsync();
             }
+
             return await dbSet.ToListAsync();
         }
 
         // GET: api/Vols/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vol>> GetVol(int id, [FromQuery(Name="bagages")] bool bagages = false)
+        public async Task<ActionResult<Vol>> GetVol(int id, [FromQuery(Name = "bagages")] bool bagages = false)
         {
-            var vol = await _context.Vols.FindAsync(id);
+            DbSet<Vol> dbSet = _context.Vols;
+            Vol vol;
+            
+            if (bagages)
+                vol = await dbSet.Include(v => v.Bagages).FirstAsync(v => v.VolID == id);
+            else
+                vol = await dbSet.FindAsync(id);
 
             if (vol == null)
             {
                 return NotFound();
             }
-            if (bagages)
-                await _context.Entry(vol).Collection(v => v.Bagages).LoadAsync();
+
             return vol;
         }
 
@@ -88,7 +94,7 @@ namespace GBO.MyAirport.WebApi.Controllers
             _context.Vols.Add(vol);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVol", new { id = vol.VolID }, vol);
+            return CreatedAtAction("GetVol", new {id = vol.VolID}, vol);
         }
 
         // DELETE: api/Vols/5
