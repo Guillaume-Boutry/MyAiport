@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+#pragma warning disable CS1591
+
 namespace GBO.MyAiport.EF.Migrations
 {
     public partial class removecascadecustom : Migration
