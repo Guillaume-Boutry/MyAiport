@@ -13,7 +13,7 @@ namespace GBO.MyAirport.Razor.Bagages
     public class CreateModel : BagagePageModel
     {
 
-        public CreateModel(GBO.MyAiport.EF.MyAirportContext context) : base(context)
+        public CreateModel(MyAirportContext context) : base(context)
         {
         }
 
@@ -39,7 +39,7 @@ namespace GBO.MyAirport.Razor.Bagages
             _context.Bagages.Add(Bagage);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Bagage.BagageID });
         }
     }
 }

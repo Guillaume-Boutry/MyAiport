@@ -65,7 +65,7 @@ namespace GBO.MyAirport.Razor.Vols
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Vol.VolID });
         }
 
         private bool VolExists(int id)

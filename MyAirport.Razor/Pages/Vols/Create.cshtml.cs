@@ -38,7 +38,7 @@ namespace GBO.MyAirport.Razor.Vols
             _context.Vols.Add(Vol);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Vol.VolID });
         }
     }
 }

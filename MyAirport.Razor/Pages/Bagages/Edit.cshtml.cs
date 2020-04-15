@@ -62,7 +62,7 @@ namespace GBO.MyAirport.Razor.Bagages
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Bagage.BagageID });
         }
 
         private bool BagageExists(int id)

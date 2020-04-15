@@ -14,12 +14,12 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group required">
                 <label asp-for="Bagage.CodeIata" class="control-label"></label>
                 <input asp-for="Bagage.CodeIata" class="form-control" />
                 <span asp-validation-for="Bagage.CodeIata" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <label asp-for="Bagage.DateCreation" class="control-label"></label>
                 <input asp-for="Bagage.DateCreation" type="datetime-local" class="form-control" />
                 <span asp-validation-for="Bagage.DateCreation" class="text-danger"></span>
@@ -29,7 +29,7 @@
                 <input asp-for="Bagage.Classe" class="form-control" />
                 <span asp-validation-for="Bagage.Classe" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <label asp-for="Bagage.Prioritaire" class="control-label"></label>
                 <input asp-for="Bagage.Prioritaire" class="form-control" />
                 <span asp-validation-for="Bagage.Prioritaire" class="text-danger"></span>
