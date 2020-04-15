@@ -11,13 +11,13 @@ namespace GBO.MyAirport.Razor.DependencyInjection
     public class XmlDocumentation : IXmlDocumentation
     {
         private readonly ILogger<XmlDocumentation> _logger;
-        private Dictionary<String, String> documentations;
+        private readonly Dictionary<string, string> _documentations;
 
 
         public XmlDocumentation(ILogger<XmlDocumentation> logger)
         {
             _logger = logger;
-            documentations = new Dictionary<String, String>();
+            _documentations = new Dictionary<string, string>();
             var referencedAssemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies();
             referencedAssemblies.ToList().ForEach(assembly =>
             {
@@ -34,7 +34,7 @@ namespace GBO.MyAirport.Razor.DependencyInjection
                     if (summaries.Count > 0) 
                     {
                         // On part du prince qu'il n'y a au max 1 summary par element
-                        documentations.Add(name.Value, summaries[0].Value);
+                        _documentations.Add(name.Value, summaries[0].Value);
                     }
                 }
 
@@ -43,7 +43,7 @@ namespace GBO.MyAirport.Razor.DependencyInjection
 
         public string GetAssociatedXmlComment(Type objectType, string propertyName)
         {
-            return documentations[$"P:{objectType}.{propertyName}"];
+            return _documentations[$"P:{objectType}.{propertyName}"];
         }
     }
 }
