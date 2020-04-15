@@ -10,6 +10,21 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<!--form>
+    <p>
+        <label asp-for="SearchString" class="control-label"></label>
+        <input type="text" asp-for="SearchString"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</--form-->
+@using (Html.BeginForm(FormMethod.Get))
+{
+    <p>
+        @Html.LabelFor(m => m.SearchString)
+        @Html.TextBoxFor(m => m.SearchString)
+        <input type="submit" value="Filter"/>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -58,3 +73,21 @@
 }
     </tbody>
 </table>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+<script>
+$("#SearchString").keyup(function () {
+    const searchString = $(this).val().toLowerCase();
+    $("table tr").each(function (results) {
+        if (results !== 0) {
+            const text = $(this).find("td:nth-child(1)").text().toLowerCase();
+            if(text.includes(searchString)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        }
+    });
+});
+</script>

@@ -11,18 +11,30 @@ namespace GBO.MyAirport.Razor.Vols
 {
     public class IndexModel : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly MyAirportContext _context;
 
-        public IndexModel(GBO.MyAiport.EF.MyAirportContext context)
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        
+        public IndexModel(MyAirportContext context)
         {
             _context = context;
         }
-
-        public IList<Vol> Vol { get;set; }
+        
+        [BindProperty] public IList<Vol> Vol { get;set; }
 
         public async Task OnGetAsync()
         {
             Vol = await _context.Vols.ToListAsync();
+            FilterVols();
+        }
+
+        public void FilterVols()
+        {
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                Vol = Vol.Where(s => String.Join(' ', new String[]{s.Cie, s.Lig, s.Dhc.HasValue ? s.Dhc.ToString() : string.Empty}).ToLower().Contains(SearchString.ToLower())).ToList();
+            }
         }
     }
 }
