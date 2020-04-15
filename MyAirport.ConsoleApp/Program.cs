@@ -1,11 +1,11 @@
-﻿using GBO.MyAiport.EF;
-using System.Linq;
+﻿using System.Linq;
 using System;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
+using GBO.MyAirport.EF;
 using Microsoft.EntityFrameworkCore;
 
-namespace GBO.MyAiport.ConsoleApp
+namespace GBO.MyAirport.ConsoleApp
 {
     class Program
     {

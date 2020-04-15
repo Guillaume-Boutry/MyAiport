@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 
 namespace GBO.MyAirport.Razor.Vols
 {
     public class EditModel : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly GBO.MyAirport.EF.MyAirportContext _context;
 
-        public EditModel(GBO.MyAiport.EF.MyAirportContext context)
+        public EditModel(GBO.MyAirport.EF.MyAirportContext context)
         {
             _context = context;
         }

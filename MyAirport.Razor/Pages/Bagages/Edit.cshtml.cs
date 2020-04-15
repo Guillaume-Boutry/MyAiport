@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 
 namespace GBO.MyAirport.Razor.Bagages
 {

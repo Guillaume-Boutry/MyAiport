@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 
 namespace GBO.MyAirport.Razor.Bagages
 {
     public class IndexModel : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly GBO.MyAirport.EF.MyAirportContext _context;
 
-        public IndexModel(GBO.MyAiport.EF.MyAirportContext context)
+        public IndexModel(GBO.MyAirport.EF.MyAirportContext context)
         {
             _context = context;
         }

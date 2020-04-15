@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace GBO.MyAiport.EF.Migrations
+#pragma warning disable CS1591
+
+namespace GBO.MyAirport.EF.Migrations
 {
     public partial class PrioritaireNonNullable : Migration
     {

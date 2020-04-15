@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 
 namespace GBO.MyAirport.WebApi.Controllers
 {

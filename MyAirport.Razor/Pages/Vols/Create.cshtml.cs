@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 
 namespace GBO.MyAirport.Razor.Vols
 {
     public class CreateModel : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly GBO.MyAirport.EF.MyAirportContext _context;
 
-        public CreateModel(GBO.MyAiport.EF.MyAirportContext context)
+        public CreateModel(GBO.MyAirport.EF.MyAirportContext context)
         {
             _context = context;
         }

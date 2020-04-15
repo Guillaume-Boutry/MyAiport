@@ -1,4 +1,5 @@
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
+using GBO.MyAirport.Razor.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +22,10 @@ namespace GBO.MyAirport.Razor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddAntiforgery();
             services.AddDbContext<MyAirportContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AirportContext")));
+            services.AddSingleton<IXmlDocumentation, XmlDocumentation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

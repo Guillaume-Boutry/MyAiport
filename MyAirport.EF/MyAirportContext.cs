@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace GBO.MyAiport.EF
+namespace GBO.MyAirport.EF
 {
     /// <summary>
     /// Database context
