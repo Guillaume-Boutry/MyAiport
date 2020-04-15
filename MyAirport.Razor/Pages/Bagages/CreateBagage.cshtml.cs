@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using GBO.MyAiport.EF;
 
-namespace MyAirport.Razor.Pages.Bagages
+namespace GBO.MyAirport.Razor
 {
-    public class CreateModel : PageModel
+    public class CreateBagage : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly MyAirportContext _context;
 
-        public CreateModel(GBO.MyAiport.EF.MyAirportContext context)
+        public CreateBagage(MyAirportContext context)
         {
             _context = context;
         }

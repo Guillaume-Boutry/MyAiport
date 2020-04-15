@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GBO.MyAiport.EF;
 
-namespace MyAirport.Razor.Pages.Bagages
+namespace GBO.MyAirport.Razor
 {
-    public class DeleteModel : PageModel
+    public class DeleteBagage : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly MyAirportContext _context;
 
-        public DeleteModel(GBO.MyAiport.EF.MyAirportContext context)
+        public DeleteBagage(MyAirportContext context)
         {
             _context = context;
         }

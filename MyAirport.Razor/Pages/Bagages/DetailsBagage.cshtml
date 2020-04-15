@@ -1,5 +1,5 @@
 @page
-@model MyAirport.Razor.Pages.Bagages.DetailsModel
+@model GBO.MyAirport.Razor.DetailsBagage
 
 @{
     ViewData["Title"] = "Details";
@@ -62,6 +62,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Bagage.BagageID">Edit</a> |
+    <a asp-page="./EditBagage" asp-route-id="@Model.Bagage.BagageID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

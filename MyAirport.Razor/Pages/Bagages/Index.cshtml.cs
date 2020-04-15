@@ -1,19 +1,16 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GBO.MyAiport.EF;
 
-namespace MyAirport.Razor.Pages.Bagages
+namespace GBO.MyAirport.Razor
 {
-    public class IndexModel : PageModel
+    public class IndexBagage : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly MyAirportContext _context;
 
-        public IndexModel(GBO.MyAiport.EF.MyAirportContext context)
+        public IndexBagage(MyAirportContext context)
         {
             _context = context;
         }
