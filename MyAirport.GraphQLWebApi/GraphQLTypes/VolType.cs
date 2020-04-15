@@ -12,13 +12,13 @@ namespace GBO.MyAirport.GraphQLWebApi.GraphQLTypes
         public VolType() : base()
         {
             Field(x => x.VolID).Description("Vol ID");
-            Field(x => x.Cie);
-            Field(x => x.Des);
-            Field(x => x.Dhc, type: typeof(DateGraphType), nullable: true);
-            Field(x => x.Imm);
-            Field(x => x.Lig);
-            Field(x => x.Pax, type: typeof(ShortGraphType), nullable: true);
-            Field(x => x.Pkg);
+            Field(x => x.Cie).Description("Compagnie");
+            Field(x => x.Des).Description("Destination");
+            Field(x => x.Dhc, type: typeof(DateGraphType), nullable: true).Description("Date");
+            Field(x => x.Imm).Description("Imm");
+            Field(x => x.Lig).Description("Ligne");
+            Field(x => x.Pax, type: typeof(ShortGraphType), nullable: true).Description("Pax");
+            Field(x => x.Pkg).Description("Pkg");
             Field(name: "Bagages", type: typeof(ListGraphType<BagageType>), resolve: context => context.Source.Bagages);
         }
     }
