@@ -15,7 +15,7 @@ namespace GBO.MyAirport.ConsoleApp
             builder
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("System", LogLevel.Warning)
-                .AddFilter("GBO.MyAiport.ConsoleApp", LogLevel.Debug)
+                .AddFilter("GBO.MyAirport.ConsoleApp", LogLevel.Debug)
                 .AddConsole()
                 .AddEventSourceLogger();
         });

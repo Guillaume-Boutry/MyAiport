@@ -23,7 +23,7 @@ namespace GBO.MyAirport.EF.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GBO.MyAiport.EF.Bagage", b =>
+            modelBuilder.Entity("GBO.MyAirport.EF.Bagage", b =>
                 {
                     b.Property<int>("BagageID")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace GBO.MyAirport.EF.Migrations
                     b.ToTable("Bagages");
                 });
 
-            modelBuilder.Entity("GBO.MyAiport.EF.Vol", b =>
+            modelBuilder.Entity("GBO.MyAirport.EF.Vol", b =>
                 {
                     b.Property<int>("VolID")
                         .ValueGeneratedOnAdd()
@@ -100,9 +100,9 @@ namespace GBO.MyAirport.EF.Migrations
                     b.ToTable("Vols");
                 });
 
-            modelBuilder.Entity("GBO.MyAiport.EF.Bagage", b =>
+            modelBuilder.Entity("GBO.MyAirport.EF.Bagage", b =>
                 {
-                    b.HasOne("GBO.MyAiport.EF.Vol", "Vol")
+                    b.HasOne("GBO.MyAirport.EF.Vol", "Vol")
                         .WithMany("Bagages")
                         .HasForeignKey("VolID")
                         .OnDelete(DeleteBehavior.Cascade);
