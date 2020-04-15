@@ -22,9 +22,8 @@ namespace GBO.MyAirport.Razor.Bagages
             {
                 return NotFound();
             }
-
-            Vols = await getVolsAsSelectListItem();
-            Bagage = await _context.Bagages.FirstOrDefaultAsync(m => m.BagageID == id);
+            Bagage = await _context.Bagages.Include(b => b.Vol).FirstOrDefaultAsync(m => m.BagageID == id);
+            Vols = await GetVolsAsSelectListItem();
             if (Bagage == null)
             {
                 return NotFound();

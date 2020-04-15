@@ -24,14 +24,15 @@ namespace GBO.MyAirport.Razor.Bagages
             _context = context;
         }
 
-        protected async Task<IEnumerable<SelectListItem>> getVolsAsSelectListItem()
+        protected async Task<IEnumerable<SelectListItem>> GetVolsAsSelectListItem()
         {
             var vols = await _context.Vols.Select(i => new SelectListItem()
             {
                 Text = $"{i.Cie} {i.Lig} {i.Dhc}",
-                Value = i.VolID.ToString()
+                Value = i.VolID.ToString(),
+                Selected = (i.VolID == (Bagage.Vol != null ? Bagage.Vol.VolID : -1))
             }).ToListAsync();
-            vols.Insert(0, new SelectListItem() {Text = "", Value = "0"});
+            vols.Insert(0, new SelectListItem() {Text = "", Value = "0", Selected = false});
             return vols;
         }
 

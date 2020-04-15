@@ -19,7 +19,7 @@ namespace GBO.MyAirport.Razor.Bagages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            Vols = await getVolsAsSelectListItem();
+            Vols = await GetVolsAsSelectListItem();
 
             return Page();
         }
