@@ -55,6 +55,10 @@
                 <span asp-validation-for="Bagage.Escale" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @Html.LabelFor(m => m.Vols) 
+                @Html.DropDownListFor(model => model.VolID, Model.Vols, new { @class = "form-control"})
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

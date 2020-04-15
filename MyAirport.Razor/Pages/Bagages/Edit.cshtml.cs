@@ -28,20 +28,47 @@ namespace GBO.MyAirport.Razor.Bagages
             {
                 return NotFound();
             }
-
+            Vols = await getVolsAsSelectListItem();
             Bagage = await _context.Bagages.FirstOrDefaultAsync(m => m.BagageID == id);
-
             if (Bagage == null)
             {
                 return NotFound();
             }
             return Page();
         }
+        
+        private async Task<IEnumerable<SelectListItem>> getVolsAsSelectListItem()
+        {
+            var vols = await _context.Vols.Select(i => new SelectListItem()
+            {
+                Text = $"{i.Cie} {i.Lig} {i.Dhc}",
+                Value = i.VolID.ToString()
+            }).ToListAsync();
+            vols.Insert(0, new SelectListItem() { Text = "", Value = "0"});
+            return vols;
+        }
+        
+        [BindProperty] public IEnumerable<SelectListItem> Vols { get; set; }
+
+        [BindProperty] public int VolID { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            if (VolID != 0)
+            {
+                var vol = await _context.Vols.FirstAsync(v => v.VolID == VolID);
+                if (vol == null)
+                {
+                    ModelState.AddModelError("vols", "Vol invalid");
+                }
+                else
+                {
+                    Bagage.Vol = vol;
+                }
+                
+            }
             if (!ModelState.IsValid)
             {
                 return Page();
