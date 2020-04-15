@@ -5,4 +5,17 @@
     <RootNamespace>GBO.MyAirport.Razor</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Bagages" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyAirport.EF\MyAirport.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+  </ItemGroup>
+
 </Project>
