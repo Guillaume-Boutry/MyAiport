@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Bagages" />
+    <Folder Include="Pages\Vols" />
   </ItemGroup>
 
   <ItemGroup>

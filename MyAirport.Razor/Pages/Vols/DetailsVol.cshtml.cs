@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using GBO.MyAiport.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
 
-namespace MyAirport.Razor.Pages.Vols
+namespace GBO.MyAirport.Razor
 {
-    public class DetailsModel : PageModel
+    public class DetailsVol : PageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
+        private readonly MyAirportContext _context;
 
-        public DetailsModel(GBO.MyAiport.EF.MyAirportContext context)
+        public DetailsVol(MyAirportContext context)
         {
             _context = context;
         }
