@@ -14,13 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Vol[0].Cie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vol[0].Lig)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vol[0].Dhc)
+                Vol
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vol[0].Pkg)
@@ -41,13 +35,7 @@
 @foreach (var item in Model.Vol) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lig)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dhc)
+                @Html.DisplayFor(modelItem => item.Cie)&nbsp;@Html.DisplayFor(modelItem => item.Lig)&nbsp;:&nbsp;@Html.DisplayFor(modelItem => item.Dhc)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pkg)

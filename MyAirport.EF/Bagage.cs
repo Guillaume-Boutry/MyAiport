@@ -50,7 +50,7 @@ namespace GBO.MyAiport.EF
         /// <summary>
         /// Is prioritized ?
         /// </summary>
-        public bool? Prioritaire { get; set; }
+        public bool Prioritaire { get; set; } = false;
 
         /// <summary>
         /// Sta
