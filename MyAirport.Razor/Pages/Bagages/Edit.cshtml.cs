@@ -10,65 +10,36 @@ using GBO.MyAiport.EF;
 
 namespace GBO.MyAirport.Razor.Bagages
 {
-    public class EditModel : PageModel
+    public class EditModel : BagagePageModel
     {
-        private readonly GBO.MyAiport.EF.MyAirportContext _context;
-
-        public EditModel(GBO.MyAiport.EF.MyAirportContext context)
+        public EditModel(MyAirportContext context) : base(context)
         {
-            _context = context;
         }
-
-        [BindProperty]
-        public Bagage Bagage { get; set; }
-
+        
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
             Vols = await getVolsAsSelectListItem();
             Bagage = await _context.Bagages.FirstOrDefaultAsync(m => m.BagageID == id);
             if (Bagage == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
         
-        private async Task<IEnumerable<SelectListItem>> getVolsAsSelectListItem()
-        {
-            var vols = await _context.Vols.Select(i => new SelectListItem()
-            {
-                Text = $"{i.Cie} {i.Lig} {i.Dhc}",
-                Value = i.VolID.ToString()
-            }).ToListAsync();
-            vols.Insert(0, new SelectListItem() { Text = "", Value = "0"});
-            return vols;
-        }
-        
-        [BindProperty] public IEnumerable<SelectListItem> Vols { get; set; }
-
-        [BindProperty] public int VolID { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (VolID != 0)
-            {
-                var vol = await _context.Vols.FirstAsync(v => v.VolID == VolID);
-                if (vol == null)
-                {
-                    ModelState.AddModelError("vols", "Vol invalid");
-                }
-                else
-                {
-                    Bagage.Vol = vol;
-                }
-                
-            }
+            await ValidateVol();
+
             if (!ModelState.IsValid)
             {
                 return Page();
