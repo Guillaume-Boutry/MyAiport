@@ -31,7 +31,7 @@ namespace GBO.MyAirport.EF
         public virtual Vol? Vol { get; set; }
 
         /// <summary>
-        /// CodeIata
+        /// Airport Identifier Code
         /// </summary>
         [Column(TypeName = "char(12)")]
         public string CodeIata { get; set; }
