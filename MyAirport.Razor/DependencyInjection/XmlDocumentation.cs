@@ -43,7 +43,7 @@ namespace GBO.MyAirport.Razor.DependencyInjection
 
         public string GetAssociatedXmlComment(Type objectType, string propertyName)
         {
-            return _documentations[$"P:{objectType}.{propertyName}"];
+            return _documentations[$"P:{objectType}.{propertyName}"] ?? "No documentation associated";
         }
     }
 }
