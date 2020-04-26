@@ -1,6 +1,6 @@
 using System;
 using System.Configuration;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using GBO.MyAirport.GraphQLWebApi.GraphQLTypes;
 using GraphQL;
 using GraphQL.Server;

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GBO.MyAiport.EF
+namespace GBO.MyAirport.EF
 {
     /// <summary>
     /// Bagage description
@@ -31,7 +31,7 @@ namespace GBO.MyAiport.EF
         public virtual Vol? Vol { get; set; }
 
         /// <summary>
-        /// CodeIata
+        /// Airport Identifier Code
         /// </summary>
         [Column(TypeName = "char(12)")]
         public string CodeIata { get; set; }
@@ -50,7 +50,7 @@ namespace GBO.MyAiport.EF
         /// <summary>
         /// Is prioritized ?
         /// </summary>
-        public bool? Prioritaire { get; set; }
+        public bool Prioritaire { get; set; } = false;
 
         /// <summary>
         /// Sta

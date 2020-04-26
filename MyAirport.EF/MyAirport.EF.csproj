@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>GBO.MyAiport.EF</RootNamespace>
+    <RootNamespace>GBO.MyAirport.EF</RootNamespace>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -3,7 +3,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -40,8 +40,8 @@ namespace GBO.MyAirport.WebApi
         /// <param name="services">Dependency Injections</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            services.AddDbContext<MyAirportContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<MyAirportContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("AirportContext")));
             services.AddControllers().AddNewtonsoftJson(o =>
             {
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

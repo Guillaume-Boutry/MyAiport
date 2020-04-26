@@ -1,5 +1,5 @@
 using System.Linq;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using GBO.MyAirport.GraphQLWebApi.GraphQLTypes;
 using GraphQL.Types;
 using Microsoft.EntityFrameworkCore;

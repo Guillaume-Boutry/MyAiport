@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CS1591
 
-namespace GBO.MyAiport.EF.Migrations
+namespace GBO.MyAirport.EF.Migrations
 {
     public partial class InitialCreate : Migration
     {

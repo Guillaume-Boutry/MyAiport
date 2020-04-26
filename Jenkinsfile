@@ -31,7 +31,12 @@ pipeline {
             sh 'dotnet build MyAirport.ConsoleApp -c Release'
           }
         }
-
+        
+        stage('Build RazorApplication') {
+          steps {
+            sh 'dotnet build MyAirport.Razor -c Release'
+          }
+        }
       }
     }
 

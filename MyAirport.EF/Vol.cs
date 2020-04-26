@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GBO.MyAiport.EF
+namespace GBO.MyAirport.EF
 {
     /// <summary>
     /// Vol description

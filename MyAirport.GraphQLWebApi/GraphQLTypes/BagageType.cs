@@ -1,4 +1,4 @@
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using GraphQL.Types;
 
 namespace GBO.MyAirport.GraphQLWebApi.GraphQLTypes

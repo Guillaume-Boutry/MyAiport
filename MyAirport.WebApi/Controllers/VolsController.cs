@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using Microsoft.AspNetCore.Http;
 
 namespace GBO.MyAirport.WebApi.Controllers

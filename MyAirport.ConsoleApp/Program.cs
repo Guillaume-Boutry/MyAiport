@@ -1,11 +1,11 @@
-﻿using GBO.MyAiport.EF;
-using System.Linq;
+﻿using System.Linq;
 using System;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
+using GBO.MyAirport.EF;
 using Microsoft.EntityFrameworkCore;
 
-namespace GBO.MyAiport.ConsoleApp
+namespace GBO.MyAirport.ConsoleApp
 {
     class Program
     {
@@ -15,7 +15,7 @@ namespace GBO.MyAiport.ConsoleApp
             builder
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("System", LogLevel.Warning)
-                .AddFilter("GBO.MyAiport.ConsoleApp", LogLevel.Debug)
+                .AddFilter("GBO.MyAirport.ConsoleApp", LogLevel.Debug)
                 .AddConsole()
                 .AddEventSourceLogger();
         });
@@ -97,7 +97,6 @@ namespace GBO.MyAiport.ConsoleApp
                 Console.WriteLine(vod.VolID);
                 vod.Bagages.ToList().ForEach(bag => Console.WriteLine(bag.BagageID));
                 Console.WriteLine("#####################################################");
-                return;
                 Console.ReadLine();
 
                 // Delete vol et bagages du vol

@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using GBO.MyAiport.EF;
+using GBO.MyAirport.EF;
 using GraphQL.Types;
 
 
