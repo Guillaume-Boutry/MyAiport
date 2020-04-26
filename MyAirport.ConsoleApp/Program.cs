@@ -97,7 +97,6 @@ namespace GBO.MyAirport.ConsoleApp
                 Console.WriteLine(vod.VolID);
                 vod.Bagages.ToList().ForEach(bag => Console.WriteLine(bag.BagageID));
                 Console.WriteLine("#####################################################");
-                return;
                 Console.ReadLine();
 
                 // Delete vol et bagages du vol
